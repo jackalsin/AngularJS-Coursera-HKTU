@@ -44,7 +44,8 @@
                 </ul>
                 <div class="tab-content">
                     <ul class="media-list tab-pane fade in active" > <!--ng-repeat-->
-                        <li class="media" ng-repeat="dish in menuCtrl.dishes | filter: menuCtrl.filtText">
+                    <!--the filter expression document here: {{ filter_expression | filter : expression : comparator : anyPropertyKey}}-->
+                        <li class="media" ng-repeat="dish in menuCtrl.dishes | filter: menuCtrl.filtText:true:dish.category">
                             <div class="media-left media-middle">
                                 <a href="#">
                                     <img class="media-object img-thumbnail"
@@ -80,7 +81,7 @@
                 label:'Hot',
                 price:'4.99',
                 description:'A unique combination of Indian Uthappam (pancake) and Italian pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur chillies and Buffalo Paneer.',
-                comment: ''
+                comment: '' // change this to the "appetizer ddd" to test how the filter works
             }, {
                 name:'Zucchipakoda',
                 image: 'images/zucchipakoda.png',
