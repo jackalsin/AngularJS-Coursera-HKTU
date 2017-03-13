@@ -29,22 +29,22 @@
         <div class="row row-content" ng-controller="menuController as menuCtrl">
             <div class="col-xs-12">
                 <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation">
-                        <a ng-click="menuCtrl.select(1)" aria-controls="all menu" role="tab">The menu</a>
+                    <li role="presentation" ng-class="{active:menuCtrl.isSelect(1)}">
+                        <a ng-click="menuCtrl.select(1)" aria-controls="all menu" role="tab">The Menu</a>
                     </li>
-                    <li role="presentation">
+                    <li role="presentation" ng-class="{active:menuCtrl.isSelect(2)}">
                         <a ng-click="menuCtrl.select(2)" aria-controls="appetizers" role="tab">Appetizers</a>
                     </li>
-                    <li role="presentation">
+                    <li role="presentation" ng-class="{active:menuCtrl.isSelect(3)}">
                         <a ng-click="menuCtrl.select(3)" aria-controls="main" role="tab">Mains</a>
                     </li>
-                    <li role="presentation">
+                    <li role="presentation" ng-class="{active:menuCtrl.isSelect(4)}">
                         <a ng-click="menuCtrl.select(4)" aria-controls="desserts" role="tab">Desserts</a>
                     </li>
                 </ul>
                 <div class="tab-content">
                     <ul class="media-list tab-pane fade in active" > <!--ng-repeat-->
-                        <li class="media" ng-repeat="dish in menuCtrl.dishes">
+                        <li class="media" ng-repeat="dish in menuCtrl.dishes | filter: menuCtrl.filtText">
                             <div class="media-left media-middle">
                                 <a href="#">
                                     <img class="media-object img-thumbnail"
@@ -110,8 +110,23 @@
             this.tab = 1;
             this.dishes = dishes;
 
+            this.filtText = "";
+
             this.select = function (setTab) {
-              this.tab = setTab;
+                this.tab = setTab;
+                if (setTab === 2) {
+                    this.filtText = "appetizer";
+                } else if (setTab === 3) {
+                    this.filtText = "mains";
+                } else if (setTab === 4) {
+                    this.filtText = "dessert";
+                } else {
+                    this.filtText = "";
+                }
+            }
+
+            this.isSelect = function(checkTab) {
+                return (this.tab === checkTab);
             }
         });
     </script>
