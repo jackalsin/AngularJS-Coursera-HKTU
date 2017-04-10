@@ -2,7 +2,7 @@
 
 var app = angular.module("confusionApp", [])
                 .controller('menuController', function() {
-    dishes=[
+    var dishes=[
     {
         name:'Uthapizza',
         image: 'images/uthapizza.png',
@@ -36,7 +36,6 @@ var app = angular.module("confusionApp", [])
         description:'A delectable, semi-sweet New York Style Cheese Cake, with Graham cracker crust and spiced with Indian cardamoms',
         comment: ''
     }];
-
     this.tab = 1;
     this.dishes = dishes;
 
@@ -53,7 +52,7 @@ var app = angular.module("confusionApp", [])
         } else {
             this.filtText = "";
         }
-    }
+    };
 
     this.isSelect = function(checkTab) {
         return (this.tab === checkTab);
