@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module("confusionApp", [])
+angular.module("confusionApp", [])
                 .controller('menuController', function() {
     var dishes=[
     {
