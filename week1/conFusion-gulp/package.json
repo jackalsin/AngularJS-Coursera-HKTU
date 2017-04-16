@@ -4,6 +4,7 @@
   "devDependencies": {
     "browser-sync": "^2.18.8",
     "del": "^2.2.2",
+    "gulp": "^3.9.1",
     "gulp-cache": "^0.4.6",
     "gulp-changed": "^2.0.0",
     "gulp-concat": "^2.6.1",
