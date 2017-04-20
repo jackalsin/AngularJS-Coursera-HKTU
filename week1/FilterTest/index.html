@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <title>Page Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="script.js"></script>
+</head>
+
+<body ng-controller="myController">
+    <div>
+        <div>
+            <label for="filterText"> Filter Text</label>
+            <input id="filterText" ng-model="filterText" />
+        </div>
+        <div><label>person.name</label></div>
+        <div ng-repeat="person in people| filter: $parent.filterText: true: person.name">
+            <li>{{person}}</li>
+        </div>
+
+        <div><label>person.emptyArray</label></div>
+        <div ng-repeat="person in people| filter: filterText: true: person.emptyArray">
+            <li>{{person}}</li>
+        </div>
+
+
+        <div><label>person.fullArray</label></div>
+        <div ng-repeat="person in people| filter: filterText: true: person.fullArray">
+            <li>{{person}}</li>
+        </div>
+
+        <div><label>person</label></div>
+        <div ng-repeat="person in people| filter: undefined: true: person">
+            <li>{{person}}</li>
+        </div>
+    </div>
+
+</body>
+
+</html>
